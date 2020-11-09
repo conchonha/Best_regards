@@ -37,7 +37,7 @@ public class FragmentTable extends Fragment {
         mTableViewModel.getmArrayTable().observe(getViewLifecycleOwner(), new Observer<List<TableModels>>() {
             @Override
             public void onChanged(List<TableModels> tableModels) {
-                mAdapter.notifyDataSetChanged();
+                    mAdapter.notifyDataSetChanged();
 //                Log.d("11111", "onChange: "+tableModels.size());
 
             }
