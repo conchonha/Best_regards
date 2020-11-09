@@ -5,4 +5,5 @@
     <dimen name="textSize33">33sp</dimen>
     <dimen name="textSize15">15sp</dimen>
     <dimen name="textSize13">13sp</dimen>
+    <dimen name="numberTable">20sp</dimen>
 </resources>
