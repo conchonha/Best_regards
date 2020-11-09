@@ -7,7 +7,7 @@
         android:layout_centerInParent="true"
         android:layout_width="130dp"
         android:layout_height="115dp"
-        android:background="@drawable/boder_image"
+        android:background="@drawable/boder_table"
         android:gravity="center">
         <LinearLayout
             android:orientation="vertical"

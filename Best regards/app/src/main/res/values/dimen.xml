@@ -6,4 +6,5 @@
     <dimen name="textSize15">15sp</dimen>
     <dimen name="textSize13">13sp</dimen>
     <dimen name="numberTable">20sp</dimen>
+    <dimen name="textMenu">18sp</dimen>
 </resources>

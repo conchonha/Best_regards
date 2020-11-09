@@ -11,16 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.baseprojectandroid.R;
+import com.example.baseprojectandroid.src.models.table_models.TableModels;
 import com.example.baseprojectandroid.src.repositories.TableRepositories;
 
 import java.util.ArrayList;
 
 public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHodler> {
-    private ArrayList<TableRepositories>mArrayTable;
+    private ArrayList<TableModels>mArrayTable;
     private Context mContext;
     private int mLayout;
 
-    public TableAdapter(ArrayList<TableRepositories> mArrayTable, Context mContext, int mLayout) {
+    public TableAdapter(ArrayList<TableModels> mArrayTable, Context mContext, int mLayout) {
         this.mArrayTable = mArrayTable;
         this.mContext = mContext;
         this.mLayout = mLayout;
