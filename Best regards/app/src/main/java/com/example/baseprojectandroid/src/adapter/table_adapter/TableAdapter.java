@@ -3,16 +3,13 @@ package com.example.baseprojectandroid.src.adapter.table_adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.baseprojectandroid.R;
 import com.example.baseprojectandroid.src.models.table_models.TableModels;
-import com.example.baseprojectandroid.src.repositories.TableRepositories;
 
 import java.util.ArrayList;
 

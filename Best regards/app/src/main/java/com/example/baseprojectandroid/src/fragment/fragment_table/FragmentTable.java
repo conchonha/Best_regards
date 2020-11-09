@@ -14,9 +14,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.baseprojectandroid.R;
+import com.example.baseprojectandroid.compoments.toolbar.Toolbar;
 import com.example.baseprojectandroid.src.adapter.table_adapter.TableAdapter;
 import com.example.baseprojectandroid.src.models.table_models.TableModels;
-import com.example.baseprojectandroid.src.viewmodel.TableViewModel;
+import com.example.baseprojectandroid.src.viewmodel.table_viewmodel.TableViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,28 +32,40 @@ public class FragmentTable extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_table, container, false);
+        initViewModel();
+        initView();
+        init();
+        return mView;
+    }
+
+    //create viewmodel
+    private void initViewModel() {
         mTableViewModel = ViewModelProviders.of(getActivity()).get(TableViewModel.class);
         mTableViewModel.initTable();
 
+        // lắng nghe quan sát sự thay đổi của dữ liệu
         mTableViewModel.getmArrayTable().observe(getViewLifecycleOwner(), new Observer<List<TableModels>>() {
             @Override
             public void onChanged(List<TableModels> tableModels) {
-                    mAdapter.notifyDataSetChanged();
-//                Log.d("11111", "onChange: "+tableModels.size());
+                mAdapter.notifyDataSetChanged();
 
             }
         });
-        initView();
+    }
 
-        return mView;
+    private void init() {
+        //create recyclerview
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(mView.getContext(), 2));
+        mAdapter = new TableAdapter((ArrayList) mTableViewModel.getmArrayTable().getValue(), mView.getContext(), R.layout.layout_item_listtable);
+        mRecyclerView.setAdapter(mAdapter);
+
+        //add toolbar
+        getActivity().getSupportFragmentManager().beginTransaction().add(R.id.relative_layout_tabe, new Toolbar(getResources().getString(R.string.lbl_table)), "toolbar_table").commit();
     }
 
     //ánh xạ view
     private void initView() {
         mRecyclerView = mView.findViewById(R.id.recyclerTable);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(mView.getContext(),2));
-        mAdapter = new TableAdapter((ArrayList) mTableViewModel.getmArrayTable().getValue(), mView.getContext(), R.layout.layout_item_listtable);
-        mRecyclerView.setAdapter(mAdapter);
     }
 }

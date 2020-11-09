@@ -8,4 +8,8 @@
     <string name="lbl_hint_search">Enter your search</string>
     <string name="lbl_hint_nameice">ICE - CREAM</string>
     <string name="lbl_hint_money">25.000</string>
+    <string name="lbl_err_invalid_email">Email invalid</string>
+    <string name="lbl_err_invalid_password">Password invalid</string>
+    <string name="lbl_menu">Menu</string>
+    <string name="lbl_table">Table</string>
 </resources>

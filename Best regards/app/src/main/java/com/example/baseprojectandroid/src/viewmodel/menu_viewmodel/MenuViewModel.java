@@ -1,10 +1,10 @@
-package com.example.baseprojectandroid.src.viewmodel;
+package com.example.baseprojectandroid.src.viewmodel.menu_viewmodel;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.baseprojectandroid.src.models.menu_models.MenuModels;
-import com.example.baseprojectandroid.src.repositories.MenuRepositories;
+import com.example.baseprojectandroid.src.repositories.menu_repositories.MenuRepositories;
 
 import java.util.List;
 

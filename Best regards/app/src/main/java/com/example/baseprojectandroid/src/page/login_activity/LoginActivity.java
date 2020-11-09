@@ -47,10 +47,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (checkVaidation()) {
-                    Dialog dialog = Helpers.showLoadingDialog(LoginActivity.this);
-                    dialog.show();
                     try {
+                        Dialog dialog = Helpers.showLoadingDialog(LoginActivity.this);
+                        dialog.show();
                         Thread.sleep(3000);
+                        dialog.dismiss();
                         startActivity(new Intent(getApplicationContext(), BottomNavigatorBarActivity.class));
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                         new SharePrefs(LoginActivity.this).saveIsLogin(mCheckSaveLogin);
@@ -88,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    // check validation
     private boolean checkVaidation() {
         if (!Validations.isEmailValid(mEdtEmail.getText().toString())) {
             mEdtEmail.setError(getResources().getString(R.string.lbl_err_invalid_email));
