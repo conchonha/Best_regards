@@ -6,4 +6,6 @@
     <string name="lbl_password">Password</string>
     <string name="lbl_remember_me">Remember me</string>
     <string name="lbl_hint_search">Enter your search</string>
+    <string name="lbl_err_invalid_email">Email invalidate </string>
+    <string name="lbl_err_invalid_password">Password invalidate </string>
 </resources>
