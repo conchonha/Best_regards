@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BaseProjectAndroid</string>
+    <string name="lbl_hint_search">Enter your search</string>
 </resources>
