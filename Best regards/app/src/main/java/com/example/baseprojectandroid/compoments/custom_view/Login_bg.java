@@ -11,6 +11,8 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import com.example.baseprojectandroid.R;
+
 public class Login_bg extends View {
     private Paint mPaint;
     private Paint mPaint1;
@@ -43,7 +45,7 @@ public class Login_bg extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         mPath1.moveTo(getWidth(), 0);
-        mPath1.lineTo(450, 0);
+        mPath1.lineTo(getWidth()- (getWidth()/4), 0);
         mPath1.lineTo(0,getHeight()/3);
         mPath1.lineTo(0, getHeight());
         mPath1.lineTo(getWidth(), getHeight());
@@ -64,12 +66,13 @@ public class Login_bg extends View {
         mPath1 = new Path();
         mCorEffect = new CornerPathEffect(radius);
 
-        mPaint.setColor(Color.BLACK);
+        mPaint.setColor(getResources().getColor(R.color.h2B2F3E));
         mPaint.setStrokeWidth(6);
         mPaint.setPathEffect(mCorEffect);
+        mPaint.setShadowLayer(10, 10, 10, getResources().getColor(R.color.h1B1E28));
 
         mPaint1 = new Paint();
-        mPaint1.setColor(Color.BLUE);
+        mPaint1.setColor(getResources().getColor(R.color.h2B2F3E));
         mPaint1.setStrokeWidth(6);
         mPaint1.setPathEffect(mCorEffect);
     }
