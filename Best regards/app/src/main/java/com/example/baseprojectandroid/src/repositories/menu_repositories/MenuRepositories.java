@@ -1,4 +1,4 @@
-package com.example.baseprojectandroid.src.repositories;
+package com.example.baseprojectandroid.src.repositories.menu_repositories;
 
 import androidx.lifecycle.MutableLiveData;
 
