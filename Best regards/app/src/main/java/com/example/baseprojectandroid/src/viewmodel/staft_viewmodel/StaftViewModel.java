@@ -1,10 +1,10 @@
-package com.example.baseprojectandroid.src.viewmodel;
+package com.example.baseprojectandroid.src.viewmodel.staft_viewmodel;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.baseprojectandroid.src.models.staft_models.StaftModels;
-import com.example.baseprojectandroid.src.repositories.StaftRepositories;
+import com.example.baseprojectandroid.models.staft_models.StaftModels;
+import com.example.baseprojectandroid.src.repositories.staft_repositories.StaftRepositories;
 
 import java.util.List;
 

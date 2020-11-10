@@ -15,9 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.baseprojectandroid.R;
 import com.example.baseprojectandroid.compoments.toolbar.Toolbar;
+import com.example.baseprojectandroid.models.callback.CallbackToolbar;
+import com.example.baseprojectandroid.models.menu_models.MenuModels;
 import com.example.baseprojectandroid.src.adapter.menu_adapter.MenuAdapter;
-import com.example.baseprojectandroid.src.models.menu_models.MenuModels;
+import com.example.baseprojectandroid.src.dialog.fragment_dialog_add.FragmentDialogAddMenu;
 import com.example.baseprojectandroid.src.viewmodel.menu_viewmodel.MenuViewModel;
+import com.example.baseprojectandroid.utils.Constain;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,15 +31,31 @@ public class FragmentMenu extends Fragment {
     private RecyclerView mRecyclerMenu;
     private MenuViewModel mMenuViewModel;
     private MenuAdapter mAdapter;
+    private FloatingActionButton mFabAddMenu;
+
+    //variable
+    private FragmentDialogAddMenu mFragmentDialogMenu;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_menu,container,false);
+        mView = inflater.inflate(R.layout.fragment_menu, container, false);
         initViewModel();
         initView();
         init();
+        listenerOnclicked();
         return mView;
+    }
+
+    // lắng nghe sự kiện onclick view
+    private void listenerOnclicked() {
+        mFabAddMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFragmentDialogMenu = new FragmentDialogAddMenu();
+                mFragmentDialogMenu.show(getFragmentManager(), Constain.dialogMenuAdd);
+            }
+        });
     }
 
     //create viewmodel
@@ -55,17 +75,25 @@ public class FragmentMenu extends Fragment {
     private void init() {
         //set recyclerview
         mRecyclerMenu.setHasFixedSize(true);
-        mRecyclerMenu.setLayoutManager(new GridLayoutManager(mView.getContext(),2));
+        mRecyclerMenu.setLayoutManager(new GridLayoutManager(mView.getContext(), 2));
         mAdapter = new MenuAdapter((ArrayList) mMenuViewModel.getmArrayMenu().getValue(), mView.getContext(), R.layout.layout_item_menu);
         mRecyclerMenu.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
 
         // add toolbar
-        getActivity().getSupportFragmentManager().beginTransaction().add(R.id.relative_layout_menu,new Toolbar(getResources().getString(R.string.lbl_menu)),"toolbar menu").commit();
+        Toolbar mToolbar = new Toolbar();
+        getFragmentManager().beginTransaction().add(R.id.relative_layout_menu, mToolbar, "toolbar_menu").commit();
+        setCallbackToolbar(mToolbar);
     }
 
     // ánh xạ view
     private void initView() {
         mRecyclerMenu = mView.findViewById(R.id.recyclerMenu);
+        mFabAddMenu = mView.findViewById(R.id.fab_add_menu);
+    }
+
+    private void setCallbackToolbar(CallbackToolbar callbackToolbar1) {
+        CallbackToolbar callbackToolbar = callbackToolbar1;
+        callbackToolbar.onReceiveTitle(getResources().getString(R.string.lbl_menu));
     }
 }

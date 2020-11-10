@@ -1,4 +1,4 @@
-package com.example.baseprojectandroid.src.models.table_models;
+package com.example.baseprojectandroid.models.table_models;
 
 public class TableModels {
     String mNumber;

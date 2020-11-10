@@ -16,7 +16,7 @@
             android:layout_marginLeft="27dp"
             android:text="Menu"
             android:textColor="@color/h000000"
-            android:textSize="@dimen/textSize33" />
+            android:textSize="20dp" />
 
         <ImageView
             android:id="@+id/img_profile"

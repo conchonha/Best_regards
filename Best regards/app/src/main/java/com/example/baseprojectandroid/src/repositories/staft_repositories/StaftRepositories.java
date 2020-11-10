@@ -1,9 +1,8 @@
-package com.example.baseprojectandroid.src.repositories;
+package com.example.baseprojectandroid.src.repositories.staft_repositories;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.baseprojectandroid.src.models.menu_models.MenuModels;
-import com.example.baseprojectandroid.src.models.staft_models.StaftModels;
+import com.example.baseprojectandroid.models.staft_models.StaftModels;
 
 import java.util.ArrayList;
 import java.util.List;

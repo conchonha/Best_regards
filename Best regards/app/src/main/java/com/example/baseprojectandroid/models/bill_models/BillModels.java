@@ -1,4 +1,4 @@
-package com.example.baseprojectandroid.src.models.bill_models;
+package com.example.baseprojectandroid.models.bill_models;
 
 public class BillModels {
     String mImageBill;

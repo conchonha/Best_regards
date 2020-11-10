@@ -2,7 +2,7 @@ package com.example.baseprojectandroid.src.repositories.table_repositories;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.baseprojectandroid.src.models.table_models.TableModels;
+import com.example.baseprojectandroid.models.table_models.TableModels;
 
 import java.util.ArrayList;
 import java.util.List;

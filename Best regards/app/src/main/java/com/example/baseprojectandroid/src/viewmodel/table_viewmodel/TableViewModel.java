@@ -3,7 +3,7 @@ package com.example.baseprojectandroid.src.viewmodel.table_viewmodel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.baseprojectandroid.src.models.table_models.TableModels;
+import com.example.baseprojectandroid.models.table_models.TableModels;
 import com.example.baseprojectandroid.src.repositories.table_repositories.TableRepositories;
 
 import java.util.List;

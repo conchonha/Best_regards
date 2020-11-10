@@ -31,6 +31,7 @@
         android:layout_marginRight="27dp"
         android:layout_marginBottom="16dp"
         android:src="@drawable/ic_add"
+        android:id="@+id/fab_add_menu"
         android:layout_width="66dp"
         android:layout_height="72dp"/>
 

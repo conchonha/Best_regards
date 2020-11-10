@@ -1,4 +1,4 @@
-package com.example.baseprojectandroid.src.models.staft_models;
+package com.example.baseprojectandroid.models.staft_models;
 
 public class StaftModels {
     String mNameStaft;

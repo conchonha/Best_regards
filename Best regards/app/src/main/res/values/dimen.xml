@@ -7,4 +7,5 @@
     <dimen name="textSize13">13sp</dimen>
     <dimen name="numberTable">20sp</dimen>
     <dimen name="textMenu">18sp</dimen>
+    <dimen name="textSize12">12sp</dimen>
 </resources>

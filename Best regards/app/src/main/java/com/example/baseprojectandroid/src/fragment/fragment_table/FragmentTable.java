@@ -15,8 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.baseprojectandroid.R;
 import com.example.baseprojectandroid.compoments.toolbar.Toolbar;
+import com.example.baseprojectandroid.models.callback.CallbackToolbar;
 import com.example.baseprojectandroid.src.adapter.table_adapter.TableAdapter;
-import com.example.baseprojectandroid.src.models.table_models.TableModels;
+import com.example.baseprojectandroid.models.table_models.TableModels;
 import com.example.baseprojectandroid.src.viewmodel.table_viewmodel.TableViewModel;
 
 import java.util.ArrayList;
@@ -48,7 +49,6 @@ public class FragmentTable extends Fragment {
             @Override
             public void onChanged(List<TableModels> tableModels) {
                 mAdapter.notifyDataSetChanged();
-
             }
         });
     }
@@ -59,15 +59,21 @@ public class FragmentTable extends Fragment {
         mRecyclerView.setLayoutManager(new GridLayoutManager(mView.getContext(), 2));
         mAdapter = new TableAdapter((ArrayList) mTableViewModel.getmArrayTable().getValue(), mView.getContext(), R.layout.layout_item_listtable);
         mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
 
         //add toolbar
-        getActivity().getSupportFragmentManager().beginTransaction().add(R.id.relative_layout_tabe, new Toolbar(getResources().getString(R.string.lbl_table)), "toolbar_table").commit();
+        Toolbar toolbar = new Toolbar();
+        getFragmentManager().beginTransaction().add(R.id.relative_layout_tabe, toolbar, "toolbar_table").commit();
+        setCallbackToolbar(toolbar);
     }
 
     //ánh xạ view
     private void initView() {
         mRecyclerView = mView.findViewById(R.id.recyclerTable);
-        mAdapter.notifyDataSetChanged();
+    }
 
+    private void setCallbackToolbar(CallbackToolbar callbackToolbar){
+        CallbackToolbar callbackToolbar1 = callbackToolbar;
+        callbackToolbar1.onReceiveTitle(getResources().getString(R.string.lbl_table));
     }
 }

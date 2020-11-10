@@ -1,8 +1,8 @@
-package com.example.baseprojectandroid.src.repositories;
+package com.example.baseprojectandroid.src.repositories.bill_repositories;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.baseprojectandroid.src.models.bill_models.BillModels;
+import com.example.baseprojectandroid.models.bill_models.BillModels;
 
 import java.util.ArrayList;
 import java.util.List;

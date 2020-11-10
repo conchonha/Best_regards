@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.baseprojectandroid.R;
-import com.example.baseprojectandroid.src.models.bill_models.BillModels;
+import com.example.baseprojectandroid.models.bill_models.BillModels;
 
 import java.util.ArrayList;
 

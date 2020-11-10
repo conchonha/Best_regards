@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.baseprojectandroid.R;
-import com.example.baseprojectandroid.src.models.staft_models.StaftModels;
+import com.example.baseprojectandroid.models.staft_models.StaftModels;
 
 import java.util.ArrayList;
 

@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.baseprojectandroid.R;
-import com.example.baseprojectandroid.src.models.menu_models.MenuModels;
+import com.example.baseprojectandroid.models.menu_models.MenuModels;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         MenuModels menuModels = mArrayMenu.get(position);
         Picasso.with(mContext).load(menuModels.getmImage()).into(holder.mImage);
         holder.mName.setText(menuModels.getmName());
-        holder.mMoney.setText(menuModels.getmMoney());
+        holder.mMoney.setText(menuModels.getmMoney()+"");
     }
 
     @Override

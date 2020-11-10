@@ -2,6 +2,7 @@ package com.example.baseprojectandroid.src.page.login_activity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private Boolean mCheckSaveLogin = false;
     private Boolean mCheckShowPass = false;
     private String TAG = "LoginActivity";
+    private Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,18 +49,34 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (checkVaidation()) {
-                    try {
-                        Dialog dialog = Helpers.showLoadingDialog(LoginActivity.this);
-                        dialog.show();
-                        Thread.sleep(3000);
-                        dialog.dismiss();
-                        startActivity(new Intent(getApplicationContext(), BottomNavigatorBarActivity.class));
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
-                        new SharePrefs(LoginActivity.this).saveIsLogin(mCheckSaveLogin);
-                        finish();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    new AsyncTask<Void, Void, Void>() {
+                        @Override
+                        protected void onPreExecute() {
+                            dialog = Helpers.showLoadingDialog(LoginActivity.this);
+                            dialog.show();
+                            super.onPreExecute();
+                        }
+
+                        @Override
+                        protected Void doInBackground(Void... voids) {
+                            try {
+                                Thread.sleep(3000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            return null;
+                        }
+
+                        @Override
+                        protected void onPostExecute(Void aVoid) {
+                            super.onPostExecute(aVoid);
+                            dialog.dismiss();
+                            startActivity(new Intent(getApplicationContext(), BottomNavigatorBarActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                            new SharePrefs(LoginActivity.this).saveIsLogin(mCheckSaveLogin);
+                            finish();
+                        }
+                    }.execute();
                 }
             }
         });
@@ -95,11 +113,14 @@ public class LoginActivity extends AppCompatActivity {
             mEdtEmail.setError(getResources().getString(R.string.lbl_err_invalid_email));
             return false;
         }
+        mEdtEmail.setError(null);
 
         if (!Validations.isPasswordValid(mEdtPassword.getText().toString())) {
             mEdtPassword.setError(getResources().getString(R.string.lbl_err_invalid_password));
             return false;
         }
+        mEdtPassword.setError(null);
+
         return true;
 
     }

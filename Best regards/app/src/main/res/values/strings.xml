@@ -17,4 +17,19 @@
     <string name="lbl_hint_sum_bill">Tổng Bill:</string>
     <string name="lbl_hint_account_demo">Account Demo</string>
     <string name="lbl_hint_role">Role</string>
+    <string name="lbl_staft">Staft</string>
+    <string name="lbl_bill">Bill</string>
+    <string name="lbl_add_new">Add new</string>
+    <string name="lbl_name">Name</string>
+    <string name="lbl_price">Price</string>
+    <string name="lbl_image">Image</string>
+    <string name="lbl_category">Category</string>
+    <string name="lbl_number">Number</string>
+    <string name="lbl_cancel">Cancel</string>
+    <string name="lbl_add">Add</string>
+    <string name="lbl_err_name_invalid">Name invalid</string>
+    <string name="lbl_err_number_invalid">Number invalid</string>
+    <string name="lbl_err_price_invalid">Price invalid</string>
+    <string name="lbl_err_image_invalid">Please choose your picture</string>
+
 </resources>
