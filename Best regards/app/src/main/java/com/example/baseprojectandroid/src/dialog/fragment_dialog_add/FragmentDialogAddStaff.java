@@ -28,6 +28,7 @@ import com.example.baseprojectandroid.models.staft_models.StaftModels;
 import com.example.baseprojectandroid.src.viewmodel.staft_viewmodel.StaftViewModel;
 import com.example.baseprojectandroid.utils.Constain;
 import com.example.baseprojectandroid.utils.Helpers;
+import com.example.baseprojectandroid.utils.Validations;
 
 import java.util.List;
 
@@ -140,7 +141,7 @@ public class FragmentDialogAddStaff extends DialogFragment {
 
     // check validation
     private boolean checkValidation() {
-        if (mEdtFullName.getText().toString().equals("")) {
+        if (Validations.isValidName(mEdtFullName.getText().toString())) {
             mEdtFullName.setError(getString(R.string.lbl_err_name_invalid));
             return false;
         }
@@ -152,13 +153,13 @@ public class FragmentDialogAddStaff extends DialogFragment {
         }
         mEdtAge.setError(null);
 
-        if (mEdtAddress.getText().toString().equals("")) {
+        if (Validations.isValidAddress(mEdtAddress.getText().toString())) {
             mEdtAddress.setError(getString(R.string.lbl_err_address_invalid));
             return false;
         }
         mEdtAddress.setError(null);
 
-        if (mEdtPhoneNumber.getText().toString().equals("")) {
+        if (!Validations.isValidPhoneNumber(mEdtPhoneNumber.getText().toString())) {
             mEdtPhoneNumber.setError(getString(R.string.lbl_err_phone_invalid));
             return false;
         }
@@ -167,6 +168,7 @@ public class FragmentDialogAddStaff extends DialogFragment {
         if (mUriImage.equals("")) {
             Toast.makeText(getContext(), getString(R.string.lbl_err_image_invalid), Toast.LENGTH_SHORT).show();
             mImageView.setBackgroundColor(Color.RED);
+            return false;
         }
         mImageView.setBackgroundColor(getResources().getColor(R.color.transparent));
 

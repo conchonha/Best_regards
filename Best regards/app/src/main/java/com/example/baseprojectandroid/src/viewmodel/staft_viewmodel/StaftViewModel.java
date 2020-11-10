@@ -49,5 +49,19 @@ public class StaftViewModel extends ViewModel {
         mArrayStaft.postValue(arrayTmt);
     }
 
+    //update staff
+    public void updateStaff(StaftModels staftModels,int position){
+        List<StaftModels>arrayTmt = mArrayStaft.getValue();
+        arrayTmt.remove(position);
+        arrayTmt.add(position,staftModels);
+        mArrayStaft.postValue(arrayTmt);
+    }
+
+    //remove staff
+    public void removeStaff(int position){
+        List<StaftModels>arrayTmt = mArrayStaft.getValue();
+        arrayTmt.remove(position);
+        mArrayStaft.postValue(arrayTmt);
+    }
 
 }

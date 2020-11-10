@@ -48,11 +48,14 @@
                 />
         </LinearLayout>
         <ImageView
-            android:id="@+id/img_rename"
+            android:id="@+id/img_edit_staff"
             android:scaleType="fitXY"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_alignParentRight="true"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:elevation="12dp"
             android:src="@drawable/ic_rename"
             android:layout_marginLeft="26dp"
             android:layout_marginRight="57dp"
@@ -60,9 +63,13 @@
             android:layout_marginBottom="39dp"/>
         <ImageView
             android:scaleType="fitXY"
+            android:id="@+id/img_delete"
             android:layout_alignParentRight="true"
             android:layout_width="28dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_height="28dp"
+            android:elevation="12dp"
             android:src="@drawable/ic_delete"
             android:layout_marginRight="12dp"
             android:layout_marginTop="18dp"

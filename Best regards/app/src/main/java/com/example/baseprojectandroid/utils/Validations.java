@@ -58,9 +58,9 @@ public class Validations {
         return false;
     }
 
-    public static boolean isValidName(Editable s) {
+    public static boolean isValidName(String s) {
         String validName = "[0-9]*";
-        if (s.toString().matches(validName)) {
+        if (s.toString().matches(validName) || s.isEmpty()) {
             return true;
         }
         return false;
@@ -68,15 +68,15 @@ public class Validations {
 
     public static boolean isValidSpecialCharacters(Editable s) {
         Pattern regex = Pattern.compile("[$&+,:;=\\?@#|/'<>.^*()%!-]");//~`•√ππ÷×¶∆\}{°¢€£©®™✓
-        if (regex.matcher(s).find()) {
+        if (regex.matcher(s).find() ) {
             return true;
         }
         return false;
     }
 
-    public static boolean isValidAddress(Editable s) {
+    public static boolean isValidAddress(String s) {
         Pattern regex = Pattern.compile("[$&+:;=\\?@#|/'<>.^*()%!]");//~`•√ππ÷×¶∆\}{°¢€£©®™✓
-        if (regex.matcher(s).find()) {
+        if (regex.matcher(s).find() || s.isEmpty()) {
             return true;
         }
         return false;

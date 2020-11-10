@@ -40,5 +40,8 @@
     <string name="lbl_phone_number">Phone number</string>
     <string name="lbl_roles">Role</string>
     <string name="lbl_avatar">Avatar</string>
+    <string name="lbl_update">Update</string>
+    <string name="lbl_remove_dialog">Are you sure you want to delete</string>
+    <string name="lbl_delete">Delete</string>
 
 </resources>

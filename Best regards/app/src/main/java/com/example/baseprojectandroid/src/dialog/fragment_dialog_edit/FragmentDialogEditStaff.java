@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,21 +25,25 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.baseprojectandroid.R;
+import com.example.baseprojectandroid.models.callback.CallbackStaff;
+import com.example.baseprojectandroid.models.callback.CallbackToolbar;
 import com.example.baseprojectandroid.models.staft_models.StaftModels;
 import com.example.baseprojectandroid.src.viewmodel.staft_viewmodel.StaftViewModel;
 import com.example.baseprojectandroid.utils.Constain;
 import com.example.baseprojectandroid.utils.Helpers;
+import com.example.baseprojectandroid.utils.Validations;
 
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
-public class FragmentDialogEditStaff extends DialogFragment {
+public class FragmentDialogEditStaff extends DialogFragment implements CallbackStaff {
     private View mView;
     private EditText mEdtFullName, mEdtAge, mEdtAddress, mEdtPhoneNumber;
     private ImageView mImageView;
     private Spinner mSpiner;
-    private Button mBtnCancel, mBtnAdd;
+    private Button mBtnCancel, mBtnUpdate;
+    private TextView mTxtTitle;
 
     //variable
     private StaftViewModel mStaftViewModel;
@@ -46,6 +51,8 @@ public class FragmentDialogEditStaff extends DialogFragment {
     private final int REQUEST_CODE_LOAD_IMAGE = 01234;
     private String mUriImage = "";
     private Dialog mDialog;
+    private StaftModels mStaftModels;
+    private int mPosition = 0;
 
     @Nullable
     @Override
@@ -55,9 +62,23 @@ public class FragmentDialogEditStaff extends DialogFragment {
         initViewModel();
         setDataSpiner();
         listenerOnclickedView();
+        updateUi();
         return mView;
     }
 
+    private void updateUi() {
+        if(mStaftModels != null){
+            mTxtTitle.setText(getString(R.string.lbl_update));
+            mBtnUpdate.setText(getString(R.string.lbl_update));
+            mEdtFullName.setText(mStaftModels.getmNameStaft()+"");
+            mEdtAge.setText(mStaftModels.getmAge()+"");
+            mEdtAddress.setText(mStaftModels.getmAddress()+"");
+            mEdtPhoneNumber.setText(mStaftModels.getmPhoneNumber()+"");
+            mSpiner.getItemAtPosition(mStaftViewModel.getmArrayRoles().getValue().indexOf(mStaftModels.getmRole()));
+        }
+    }
+
+    // lắng nghe sự kiện onclick view
     private void listenerOnclickedView() {
         //item selected spiner
         mSpiner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -85,7 +106,7 @@ public class FragmentDialogEditStaff extends DialogFragment {
         });
 
         //add staff
-        mBtnAdd.setOnClickListener(new View.OnClickListener() {
+        mBtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkValidation()) {
@@ -108,7 +129,7 @@ public class FragmentDialogEditStaff extends DialogFragment {
                             StaftModels staftModels = new StaftModels(fullName, age, address, phone, mType, mUriImage);
                             try {
                                 Thread.sleep(3000);
-                                mStaftViewModel.insertStaff(staftModels);
+                                mStaftViewModel.updateStaff(staftModels,mPosition);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
@@ -121,7 +142,7 @@ public class FragmentDialogEditStaff extends DialogFragment {
                             //close dialog
                             mDialog.dismiss();
 
-                            Helpers.hideFragmentDialog(FragmentDialogEditStaff.this, Constain.dialogStaff);
+                            Helpers.hideFragmentDialog(FragmentDialogEditStaff.this, Constain.dialogStaffEdit);
                         }
                     }.execute();
                 }
@@ -129,18 +150,17 @@ public class FragmentDialogEditStaff extends DialogFragment {
         });
 
         //cancel dialog fragment
-
         mBtnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Helpers.hideFragmentDialog(FragmentDialogEditStaff.this, Constain.dialogStaff);
+                Helpers.hideFragmentDialog(FragmentDialogEditStaff.this, Constain.dialogStaffEdit);
             }
         });
     }
 
     // check validation
     private boolean checkValidation() {
-        if (mEdtFullName.getText().toString().equals("")) {
+        if (Validations.isValidName(mEdtFullName.getText().toString())) {
             mEdtFullName.setError(getString(R.string.lbl_err_name_invalid));
             return false;
         }
@@ -152,13 +172,13 @@ public class FragmentDialogEditStaff extends DialogFragment {
         }
         mEdtAge.setError(null);
 
-        if (mEdtAddress.getText().toString().equals("")) {
+        if (Validations.isValidAddress(mEdtAddress.getText().toString())) {
             mEdtAddress.setError(getString(R.string.lbl_err_address_invalid));
             return false;
         }
         mEdtAddress.setError(null);
 
-        if (mEdtPhoneNumber.getText().toString().equals("")) {
+        if (!Validations.isValidPhoneNumber(mEdtPhoneNumber.getText().toString())) {
             mEdtPhoneNumber.setError(getString(R.string.lbl_err_phone_invalid));
             return false;
         }
@@ -167,6 +187,7 @@ public class FragmentDialogEditStaff extends DialogFragment {
         if (mUriImage.equals("")) {
             Toast.makeText(getContext(), getString(R.string.lbl_err_image_invalid), Toast.LENGTH_SHORT).show();
             mImageView.setBackgroundColor(Color.RED);
+            return false;
         }
         mImageView.setBackgroundColor(getResources().getColor(R.color.transparent));
 
@@ -211,6 +232,7 @@ public class FragmentDialogEditStaff extends DialogFragment {
         });
     }
 
+    //ánh xạ view
     private void initView() {
         mEdtFullName = mView.findViewById(R.id.edt_dialog_staff_name);
         mEdtAge = mView.findViewById(R.id.edt_dialog_staff_age);
@@ -219,6 +241,13 @@ public class FragmentDialogEditStaff extends DialogFragment {
         mImageView = mView.findViewById(R.id.img_dialog_staff);
         mSpiner = mView.findViewById(R.id.spiner_staff);
         mBtnCancel = mView.findViewById(R.id.btn_cancel);
-        mBtnAdd = mView.findViewById(R.id.btn_add);
+        mBtnUpdate = mView.findViewById(R.id.btn_add);
+        mTxtTitle = mView.findViewById(R.id.txt_title_dialog_fragment_edit);
+    }
+
+    @Override
+    public void onGetStaff(StaftModels staftModels,int position) {
+        mStaftModels = staftModels;
+        mPosition = position;
     }
 }

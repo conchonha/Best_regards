@@ -1,14 +1,18 @@
 package com.example.baseprojectandroid.src.fragment.fragment_staft;
 
+import android.app.Dialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -21,8 +25,10 @@ import com.example.baseprojectandroid.models.callback.CallbackToolbar;
 import com.example.baseprojectandroid.models.staft_models.StaftModels;
 import com.example.baseprojectandroid.src.adapter.staft_adapter.StaftAdapter;
 import com.example.baseprojectandroid.src.dialog.fragment_dialog_add.FragmentDialogAddStaff;
+import com.example.baseprojectandroid.src.dialog.fragment_dialog_edit.FragmentDialogEditStaff;
 import com.example.baseprojectandroid.src.viewmodel.staft_viewmodel.StaftViewModel;
 import com.example.baseprojectandroid.utils.Constain;
+import com.example.baseprojectandroid.utils.Helpers;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -36,6 +42,8 @@ public class FragmentStaft extends Fragment {
     private Toolbar mToolbar;
     private FloatingActionButton mFabStaff;
 
+    //variable
+    private Dialog mDialog;
 
     @Nullable
     @Override
@@ -64,7 +72,7 @@ public class FragmentStaft extends Fragment {
         //set recyclerview
         mRecyclerStaft.setHasFixedSize(true);
         mRecyclerStaft.setLayoutManager(new LinearLayoutManager(mView.getContext()));
-        mAdapterStaft = new StaftAdapter(mView.getContext(), R.layout.layout_item_staft, (ArrayList) mStaftViewModel.getmArrayStaff().getValue());
+        mAdapterStaft = new StaftAdapter(FragmentStaft.this, R.layout.layout_item_staft, (ArrayList) mStaftViewModel.getmArrayStaff().getValue());
         mRecyclerStaft.setAdapter(mAdapterStaft);
         mAdapterStaft.notifyDataSetChanged();
 
@@ -98,5 +106,64 @@ public class FragmentStaft extends Fragment {
     private void initView() {
         mRecyclerStaft = mView.findViewById(R.id.recyclerStaft);
         mFabStaff = mView.findViewById(R.id.fab_add_staff);
+    }
+
+    //remove staff
+    public void removeStaff(final int position){
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.layout_dialog_remove);
+
+        //ánh xạ
+        Button btnCancel = dialog.findViewById(R.id.btn_cancel);
+        Button btnDelete = dialog.findViewById(R.id.btn_delete);
+
+        //onclicked view
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AsyncTask<Void, Void, Void>() {
+                    @Override
+                    protected void onPreExecute() {
+                        mDialog = Helpers.showLoadingDialog(getActivity());
+                        mDialog.show();
+                        super.onPreExecute();
+                    }
+
+                    @Override
+                    protected Void doInBackground(Void... voids) {
+                        try {
+                            Thread.sleep(3000);
+                            mStaftViewModel.removeStaff(position);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        return null;
+                    }
+
+                    @Override
+                    protected void onPostExecute(Void aVoid) {
+                        super.onPostExecute(aVoid);
+                        //close dialog
+                        mDialog.dismiss();
+                        dialog.dismiss();
+                        Fragment prev = getFragmentManager().findFragmentByTag(Constain.dialogStaffEdit);
+                        if (prev != null) {
+                            DialogFragment df = (DialogFragment) prev;
+                            df.dismiss();
+                        }
+                    }
+                }.execute();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
     }
 }

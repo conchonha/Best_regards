@@ -29,6 +29,7 @@ import com.example.baseprojectandroid.models.menu_models.MenuModels;
 import com.example.baseprojectandroid.src.viewmodel.menu_viewmodel.MenuViewModel;
 import com.example.baseprojectandroid.utils.Constain;
 import com.example.baseprojectandroid.utils.Helpers;
+import com.example.baseprojectandroid.utils.Validations;
 
 import java.util.List;
 
@@ -145,7 +146,7 @@ public class FragmentDialogAddMenu extends DialogFragment {
 
     // check validation insert menu
     private boolean checkValidationInsertMenu() {
-        if (mEdtName.getText().toString().equals("")) {
+        if (Validations.isValidName(mEdtName.getText().toString())) {
             mEdtName.setError(getString(R.string.lbl_err_name_invalid));
             return false;
         }
