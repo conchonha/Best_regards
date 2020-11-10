@@ -12,4 +12,9 @@
     <string name="lbl_err_invalid_password">Password invalid</string>
     <string name="lbl_menu">Menu</string>
     <string name="lbl_table">Table</string>
+    <string name="lbl_hint_code_bill">Mã Hóa Đơn</string>
+    <string name="lbl_hint_date_bill">Ngày/Tháng/Năm</string>
+    <string name="lbl_hint_sum_bill">Tổng Bill:</string>
+    <string name="lbl_hint_account_demo">Account Demo</string>
+    <string name="lbl_hint_role">Role</string>
 </resources>

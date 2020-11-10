@@ -25,7 +25,8 @@ public class MenuRepositories {
         return arrayTmp;
     }
     public void setDataMenu(){
-        for (int i = 0; i < 3; i++){
+        mListMenu.clear();
+        for (int i = 0; i <= 2; i++){
             MenuModels models = new MenuModels();
             models.setmImage("https://images.media-allrecipes.com/userphotos/453291.jpg");
             models.setmName("Ice Cream");

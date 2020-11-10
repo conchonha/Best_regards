@@ -67,5 +67,7 @@ public class FragmentTable extends Fragment {
     //ánh xạ view
     private void initView() {
         mRecyclerView = mView.findViewById(R.id.recyclerTable);
+        mAdapter.notifyDataSetChanged();
+
     }
 }

@@ -28,9 +28,10 @@ public class TableRepositories {
     }
 
     private void setDataTable(){
-        for (int i = 0; i < 6; i++){
+        mListTable.clear();
+        for (int i = 0; i <= 5; i++){
             TableModels models = new TableModels();
-            models.setmNumber("1");
+            models.setmNumber("");
             mListTable.add(models);
         }
     }

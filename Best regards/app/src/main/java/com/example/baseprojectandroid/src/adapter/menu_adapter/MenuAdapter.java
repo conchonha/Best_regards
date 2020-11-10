@@ -46,6 +46,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         return mArrayMenu.size();
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView mImage;
         private TextView mName, mMoney;
