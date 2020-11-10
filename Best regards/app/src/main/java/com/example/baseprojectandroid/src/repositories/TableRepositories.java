@@ -2,7 +2,6 @@ package com.example.baseprojectandroid.src.repositories;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.baseprojectandroid.R;
 import com.example.baseprojectandroid.src.models.table_models.TableModels;
 
 import java.util.ArrayList;
@@ -29,9 +28,10 @@ public class TableRepositories {
     }
 
     private void setDataTable(){
-        for (int i = 0; i < 6; i++){
+        mListTable.clear();
+        for (int i = 0; i <= 5; i++){
             TableModels models = new TableModels();
-            models.setmNumber("1");
+            models.setmNumber("");
             mListTable.add(models);
         }
     }

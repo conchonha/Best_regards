@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,7 +38,7 @@ public class FragmentMenu extends Fragment {
         mMenuViewModel.getmArrayMenu().observe(getViewLifecycleOwner(), new Observer<List<MenuModels>>() {
             @Override
             public void onChanged(List<MenuModels> menuModels) {
-                Log.d("11111", "onChange: "+menuModels.size());
+//                Log.d("11111", "onChange: "+menuModels.size());
                 mAdapter.notifyDataSetChanged();
             }
         });

@@ -54,5 +54,7 @@ public class FragmentTable extends Fragment {
         mRecyclerView.setLayoutManager(new GridLayoutManager(mView.getContext(),2));
         mAdapter = new TableAdapter((ArrayList) mTableViewModel.getmArrayTable().getValue(), mView.getContext(), R.layout.layout_item_listtable);
         mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+
     }
 }

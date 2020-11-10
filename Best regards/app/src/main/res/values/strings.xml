@@ -8,4 +8,11 @@
     <string name="lbl_hint_search">Enter your search</string>
     <string name="lbl_hint_nameice">ICE - CREAM</string>
     <string name="lbl_hint_money">25.000</string>
+    <string name="lbl_hint_code_bill">Mã Hóa Đơn</string>
+    <string name="lbl_hint_date_bill">Ngày/Tháng/Năm</string>
+    <string name="lbl_hint_sum_bill">Tổng Bill:</string>
+    <string name="lbl_err_invalid_email">sad</string>
+    <string name="lbl_err_invalid_password">email</string>
+    <string name="lbl_hint_account_demo">Account Demo</string>
+    <string name="lbl_hint_role">Role</string>
 </resources>
