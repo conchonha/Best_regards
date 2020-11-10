@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -24,13 +24,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="29dp"
-            android:text="@string/lbl_name"
+            android:text="@string/lbl_full_name"
             android:textColor="@color/h000000"
             android:textSize="@dimen/textSize12"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/edt_dialog_menu_name"
+            android:id="@+id/edt_dialog_staff_name"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:textSize="@dimen/textSize12"
@@ -45,13 +45,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="23dp"
-            android:text="@string/lbl_price"
+            android:text="@string/lbl_age"
             android:textColor="@color/h000000"
             android:textSize="@dimen/textSize12"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/edt_dialog_menu_price"
+            android:id="@+id/edt_dialog_staff_age"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="5dp"
@@ -66,25 +66,49 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="23dp"
-            android:text="@string/lbl_image"
+            android:text="@string/lbl_address"
             android:textColor="@color/h000000"
             android:textSize="@dimen/textSize12"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/img_dialog_menu"
-            android:layout_width="119dp"
-            android:layout_height="92dp"
+        <EditText
+            android:id="@+id/edt_dialog_staff_address"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/background_linerlayout"
-            android:scaleType="fitXY" />
+            android:textSize="@dimen/textSize12"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/background_edittext"
+            android:inputType="text" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="23dp"
-            android:text="@string/lbl_category"
+            android:text="@string/lbl_phone_number"
+            android:textColor="@color/h000000"
+            android:textSize="@dimen/textSize12"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edt_dialog_staff_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:textSize="@dimen/textSize12"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/background_edittext"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="23dp"
+            android:text="@string/lbl_roles"
             android:textColor="@color/h000000"
             android:textSize="@dimen/textSize12"
             android:textStyle="bold" />
@@ -95,7 +119,7 @@
             android:layout_marginTop="5dp">
 
             <Spinner
-                android:id="@+id/spiner_add_menu"
+                android:id="@+id/spiner_staff"
                 android:layout_width="112dp"
                 android:layout_height="27dp"
                 android:background="@drawable/background_linerlayout" />
@@ -113,21 +137,18 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="23dp"
-            android:text="@string/lbl_number"
+            android:text="@string/lbl_avatar"
             android:textColor="@color/h000000"
             android:textSize="@dimen/textSize12"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/edt_dialog_menu_number"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:paddingLeft="10dp"
+        <ImageView
+            android:id="@+id/img_dialog_staff"
+            android:layout_width="119dp"
+            android:layout_height="92dp"
             android:layout_marginTop="5dp"
-            android:paddingRight="10dp"
-            android:textSize="@dimen/textSize12"
-            android:background="@drawable/background_edittext"
-            android:inputType="number" />
+            android:background="@drawable/background_linerlayout"
+            android:scaleType="fitXY" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -157,4 +178,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+</LinearLayout>

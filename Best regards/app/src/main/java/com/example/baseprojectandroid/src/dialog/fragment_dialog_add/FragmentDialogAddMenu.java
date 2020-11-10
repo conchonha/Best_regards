@@ -8,7 +8,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -22,7 +21,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -40,8 +38,8 @@ public class FragmentDialogAddMenu extends DialogFragment {
     private View mView;
     private Spinner mSpinner;
     private MenuViewModel mMenuViewmodel;
-    private Button mBtnCancel,mBtnAdd;
-    private EditText mEdtName,mEdtPrice,mEdtNumber;
+    private Button mBtnCancel, mBtnAdd;
+    private EditText mEdtName, mEdtPrice, mEdtNumber;
     private ImageView mImage;
 
     //variable
@@ -68,7 +66,7 @@ public class FragmentDialogAddMenu extends DialogFragment {
         mBtnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Helpers.hideFragmentDialog(FragmentDialogAddMenu.this,Constain.dialogMenuAdd);
+                Helpers.hideFragmentDialog(FragmentDialogAddMenu.this, Constain.dialogMenuAdd);
             }
         });
 
@@ -81,15 +79,17 @@ public class FragmentDialogAddMenu extends DialogFragment {
                 String number = mEdtNumber.getText().toString();
                 String image = "https://images.media-allrecipes.com/userphotos/453291.jpg"; // mUriImage
 
-                if(checkValidationInsertMenu()){
+                if (checkValidationInsertMenu()) {
                     //create model
-                    final MenuModels menuModels = new MenuModels(image,name,Integer.parseInt(price),mType,Integer.parseInt(number));
+                    final MenuModels menuModels = new MenuModels(image, name, Integer.parseInt(price), mType, Integer.parseInt(number));
 
                     //insert menu
                     new AsyncTask<Void, Void, Void>() {
                         @Override
                         protected void onPostExecute(Void aVoid) {
+                            // colse dialog
                             dialog.dismiss();
+                            Helpers.hideFragmentDialog(FragmentDialogAddMenu.this, Constain.dialogMenuAdd);
                             super.onPostExecute(aVoid);
                         }
 
@@ -97,7 +97,7 @@ public class FragmentDialogAddMenu extends DialogFragment {
                         protected Void doInBackground(Void... voids) {
                             try {
                                 Thread.sleep(3000);
-                                mMenuViewmodel.insertMenu(menuModels,FragmentDialogAddMenu.this);
+                                mMenuViewmodel.insertMenu(menuModels);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
@@ -107,10 +107,10 @@ public class FragmentDialogAddMenu extends DialogFragment {
 
                         @Override
                         protected void onPreExecute() {
+                            super.onPreExecute();
                             // show dialog
                             dialog = Helpers.showLoadingDialog(getActivity());
                             dialog.show();
-                            super.onPreExecute();
                         }
                     }.execute();
                 }
@@ -122,7 +122,6 @@ public class FragmentDialogAddMenu extends DialogFragment {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(mView.getContext(), mSpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                 mType = mSpinner.getSelectedItem().toString();
             }
 
@@ -145,27 +144,27 @@ public class FragmentDialogAddMenu extends DialogFragment {
     }
 
     // check validation insert menu
-    private boolean checkValidationInsertMenu(){
-        if(mEdtName.getText().toString().equals("")){
+    private boolean checkValidationInsertMenu() {
+        if (mEdtName.getText().toString().equals("")) {
             mEdtName.setError(getString(R.string.lbl_err_name_invalid));
             return false;
         }
         mEdtName.setError(null);
 
-        if(mEdtPrice.getText().toString().equals("")){
+        if (mEdtPrice.getText().toString().equals("")) {
             mEdtPrice.setError(getString(R.string.lbl_err_price_invalid));
             return false;
         }
         mEdtPrice.setError(null);
 
-        if(mUriImage.equals("")){
+        if (mUriImage.equals("")) {
             mImage.setBackgroundColor(Color.RED);
             Toast.makeText(getContext(), getString(R.string.lbl_err_image_invalid), Toast.LENGTH_SHORT).show();
             return false;
         }
         mImage.setBackgroundColor(getResources().getColor(R.color.transparent));
 
-        if(mEdtNumber.getText().toString().equals("")){
+        if (mEdtNumber.getText().toString().equals("")) {
             mEdtNumber.setError(getString(R.string.lbl_err_number_invalid));
             return false;
         }
@@ -177,8 +176,8 @@ public class FragmentDialogAddMenu extends DialogFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==REQUEST_CODE_LOAD_IMAGE && resultCode == RESULT_OK && data != null){
-            Uri uri=data.getData();
+        if (requestCode == REQUEST_CODE_LOAD_IMAGE && resultCode == RESULT_OK && data != null) {
+            Uri uri = data.getData();
             mUriImage = uri.getPath();
             mImage.setImageURI(uri);
         }
@@ -207,7 +206,7 @@ public class FragmentDialogAddMenu extends DialogFragment {
         mMenuViewmodel.getArayListTile().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
             @Override
             public void onChanged(List<String> strings) {
-                Log.d(TAG, "onChanged: "+strings.size());
+                Log.d(TAG, "onChanged: " + strings.size());
             }
         });
     }

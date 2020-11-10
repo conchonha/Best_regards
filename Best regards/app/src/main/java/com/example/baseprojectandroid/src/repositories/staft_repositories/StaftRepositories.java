@@ -10,6 +10,7 @@ import java.util.List;
 public class StaftRepositories {
     private static  StaftRepositories instanceStarft;
     private static List<StaftModels> mListStaft = new ArrayList<>();
+    private static List<String>mListRoles = new ArrayList<>();
 
     public static StaftRepositories getInstance(){
         if (instanceStarft == null){
@@ -18,14 +19,15 @@ public class StaftRepositories {
         return instanceStarft;
     }
     
-
+    // get list staft
     public MutableLiveData<List<StaftModels>> getListStaft(){
         MutableLiveData<List<StaftModels>> arrayTmp = new MutableLiveData<>();
-        setDataMenu();
+        setDataStaff();
         arrayTmp.setValue(mListStaft);
         return arrayTmp;
     }
-    public void setDataMenu(){
+
+    private void setDataStaff(){
         mListStaft.clear();
         for (int i = 0; i <= 2; i++){
             StaftModels models = new StaftModels();
@@ -33,5 +35,20 @@ public class StaftRepositories {
             models.setmRole("Role");
             mListStaft.add(models);
         }
+    }
+
+    //get list roles
+    public MutableLiveData<List<String>>getListRoles(){
+        MutableLiveData<List<String>> arrayTmt = new MutableLiveData<>();
+        setDataRoles();
+        arrayTmt.setValue(mListRoles);
+        return arrayTmt;
+    }
+
+    private void setDataRoles(){
+        mListRoles.clear();
+        mListRoles.add("Staff");
+        mListRoles.add("Admin");
+        mListRoles.add("Cashier");
     }
 }

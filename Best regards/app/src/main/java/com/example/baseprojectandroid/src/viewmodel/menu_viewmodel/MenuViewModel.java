@@ -32,13 +32,10 @@ public class MenuViewModel extends ViewModel {
     }
 
     //khởi tạo + get data spiner + insert data menu
-    public void insertMenu(MenuModels menuModels,Fragment fragment){
+    public void insertMenu(MenuModels menuModels){
         List<MenuModels> list = mArrayMenu.getValue();
         list.add(menuModels);
         mArrayMenu.postValue(list);
-
-        // colse dialog
-        Helpers.hideFragmentDialog(fragment,Constain.dialogMenuAdd);
     }
 
     public void initAddMenu(){

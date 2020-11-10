@@ -31,5 +31,14 @@
     <string name="lbl_err_number_invalid">Number invalid</string>
     <string name="lbl_err_price_invalid">Price invalid</string>
     <string name="lbl_err_image_invalid">Please choose your picture</string>
+    <string name="lbl_err_age_invalid">Age invalid</string>
+    <string name="lbl_err_address_invalid">Address invalid</string>
+    <string name="lbl_err_phone_invalid">Phone invalid</string>
+    <string name="lbl_full_name">Full name</string>
+    <string name="lbl_age">Age</string>
+    <string name="lbl_address">Address</string>
+    <string name="lbl_phone_number">Phone number</string>
+    <string name="lbl_roles">Role</string>
+    <string name="lbl_avatar">Avatar</string>
 
 </resources>
