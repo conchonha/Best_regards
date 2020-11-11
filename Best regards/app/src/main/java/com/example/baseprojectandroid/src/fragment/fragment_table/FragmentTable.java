@@ -1,5 +1,7 @@
 package com.example.baseprojectandroid.src.fragment.fragment_table;
 
+import android.app.Dialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,8 @@ import com.example.baseprojectandroid.models.callback.CallbackToolbar;
 import com.example.baseprojectandroid.models.table_model.TableModel;
 import com.example.baseprojectandroid.src.adapter.table_adapter.TableAdapter;
 import com.example.baseprojectandroid.src.viewmodel.table_viewmodel.TableViewModel;
+import com.example.baseprojectandroid.utils.Helpers;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +32,9 @@ public class FragmentTable extends Fragment {
     private RecyclerView mRecyclerView;
     private TableViewModel mTableViewModel;
     private TableAdapter mAdapter;
+    private FloatingActionButton mFabAddTable;
+    //variable
+    private Dialog mDialog;
 
     @Nullable
     @Override
@@ -36,7 +43,41 @@ public class FragmentTable extends Fragment {
         initViewModel();
         initView();
         init();
+        listenerOnclicked();
         return mView;
+    }
+
+    private void listenerOnclicked() {
+        mFabAddTable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AsyncTask<Void, Void, Void>() {
+                    @Override
+                    protected void onPreExecute() {
+                        super.onPreExecute();
+                        mDialog = Helpers.showLoadingDialog(getActivity());
+                        mDialog.show();
+                    }
+
+                    @Override
+                    protected Void doInBackground(Void... voids) {
+                        try {
+                            Thread.sleep(3000);
+                            mTableViewModel.insertTable();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        return null;
+                    }
+
+                    @Override
+                    protected void onPostExecute(Void aVoid) {
+                        super.onPostExecute(aVoid);
+                        mDialog.dismiss();
+                    }
+                }.execute();
+            }
+        });
     }
 
     //create viewmodel
@@ -70,6 +111,7 @@ public class FragmentTable extends Fragment {
     //ánh xạ view
     private void initView() {
         mRecyclerView = mView.findViewById(R.id.recyclerTable);
+        mFabAddTable = mView.findViewById(R.id.fab_add_table);
     }
 
     private void setCallbackToolbar(CallbackToolbar callbackToolbar) {

@@ -29,6 +29,7 @@
         android:layout_alignParentRight="true"
         android:backgroundTint="@color/h748A9D"
         android:layout_alignParentBottom="true"
+        android:id="@+id/fab_add_table"
         android:layout_marginRight="27dp"
         android:layout_marginBottom="16dp"
         android:src="@drawable/ic_add"

@@ -26,7 +26,7 @@ public class FoodRepositorie {
     }
 
     private void setDataListFood() {
-        for (int i = 0 ; i <= 10 ; i++){
+        for (int i = 0 ; i <= 12; i++){
             mListFood.add(new FoodModel("image",25000,"Hamburger"));
         }
     }

@@ -33,10 +33,29 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolderFood
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderFood holder, int position) {
-//        FoodModel foodModel = mArrayFood.get(position);
-//        holder.mTxtName.setText(foodModel.getmName());
-//        holder.mTxtPrice.setText(foodModel.getmPrice()+"");
+    public void onBindViewHolder(@NonNull final ViewHolderFood holder, int position) {
+        FoodModel foodModel = mArrayFood.get(position);
+        holder.mTxtName.setText(foodModel.getmName());
+        holder.mTxtPrice.setText(foodModel.getmPrice()+"");
+        holder.mImgPree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int number = Integer.parseInt(holder.mTxtNumber.getText().toString());
+                if(number > 1){
+                    --number;
+                }
+                holder.mTxtNumber.setText(number+"");
+            }
+        });
+
+        holder.mImgNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int number = Integer.parseInt(holder.mTxtNumber.getText().toString());
+                number++;
+                holder.mTxtNumber.setText(number+"");
+            }
+        });
     }
 
     @Override

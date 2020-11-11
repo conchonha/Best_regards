@@ -24,4 +24,10 @@ public class TableViewModel extends ViewModel {
         return mArrayTable;
     }
 
+    public void insertTable(){
+        List<TableModel>list = mArrayTable.getValue();
+        list.add(new TableModel());
+        mArrayTable.postValue(list);
+    }
+
 }
