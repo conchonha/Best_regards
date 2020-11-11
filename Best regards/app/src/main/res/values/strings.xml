@@ -43,5 +43,6 @@
     <string name="lbl_update">Update</string>
     <string name="lbl_remove_dialog">Are you sure you want to delete</string>
     <string name="lbl_delete">Delete</string>
+    <string name="lbl_wellcome">Wellcome</string>
 
 </resources>

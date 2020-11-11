@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.baseprojectandroid.models.staft_models.StaftModels;
+import com.example.baseprojectandroid.models.staft_model.StaftModel;
 import com.example.baseprojectandroid.src.repositories.staft_repositories.StaftRepositories;
 
 import java.util.List;
 
 public class StaftViewModel extends ViewModel {
-    private MutableLiveData<List<StaftModels>> mArrayStaft;
+    private MutableLiveData<List<StaftModel>> mArrayStaft;
     private MutableLiveData<List<String>> mArrayRoles;
     private StaftRepositories mStaftRepositories;
 
@@ -24,7 +24,7 @@ public class StaftViewModel extends ViewModel {
     }
 
     //get list staff
-    public MutableLiveData<List<StaftModels>> getmArrayStaff() {
+    public MutableLiveData<List<StaftModel>> getmArrayStaff() {
         return mArrayStaft;
     }
 
@@ -43,23 +43,23 @@ public class StaftViewModel extends ViewModel {
     }
 
     //insert staff
-    public void insertStaff(StaftModels staftModels){
-        List<StaftModels>arrayTmt = mArrayStaft.getValue();
-        arrayTmt.add(staftModels);
+    public void insertStaff(StaftModel staftModel){
+        List<StaftModel>arrayTmt = mArrayStaft.getValue();
+        arrayTmt.add(staftModel);
         mArrayStaft.postValue(arrayTmt);
     }
 
     //update staff
-    public void updateStaff(StaftModels staftModels,int position){
-        List<StaftModels>arrayTmt = mArrayStaft.getValue();
+    public void updateStaff(StaftModel staftModel, int position){
+        List<StaftModel>arrayTmt = mArrayStaft.getValue();
         arrayTmt.remove(position);
-        arrayTmt.add(position,staftModels);
+        arrayTmt.add(position, staftModel);
         mArrayStaft.postValue(arrayTmt);
     }
 
     //remove staff
     public void removeStaff(int position){
-        List<StaftModels>arrayTmt = mArrayStaft.getValue();
+        List<StaftModel>arrayTmt = mArrayStaft.getValue();
         arrayTmt.remove(position);
         mArrayStaft.postValue(arrayTmt);
     }

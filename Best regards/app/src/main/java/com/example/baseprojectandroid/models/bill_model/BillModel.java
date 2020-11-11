@@ -1,6 +1,6 @@
-package com.example.baseprojectandroid.models.bill_models;
+package com.example.baseprojectandroid.models.bill_model;
 
-public class BillModels {
+public class BillModel {
     String mImageBill;
     String mBillCode;
     String mDate;

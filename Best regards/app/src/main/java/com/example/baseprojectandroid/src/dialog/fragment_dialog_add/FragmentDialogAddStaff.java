@@ -24,7 +24,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.baseprojectandroid.R;
-import com.example.baseprojectandroid.models.staft_models.StaftModels;
+import com.example.baseprojectandroid.models.staft_model.StaftModel;
 import com.example.baseprojectandroid.src.viewmodel.staft_viewmodel.StaftViewModel;
 import com.example.baseprojectandroid.utils.Constain;
 import com.example.baseprojectandroid.utils.Helpers;
@@ -106,10 +106,10 @@ public class FragmentDialogAddStaff extends DialogFragment {
                         @Override
                         protected Void doInBackground(Void... voids) {
                             //create model staft
-                            StaftModels staftModels = new StaftModels(fullName, age, address, phone, mType, mUriImage);
+                            StaftModel staftModel = new StaftModel(fullName, age, address, phone, mType, mUriImage);
                             try {
                                 Thread.sleep(3000);
-                                mStaftViewModel.insertStaff(staftModels);
+                                mStaftViewModel.insertStaff(staftModel);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }

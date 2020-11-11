@@ -25,7 +25,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.baseprojectandroid.R;
-import com.example.baseprojectandroid.models.menu_models.MenuModels;
+import com.example.baseprojectandroid.models.menu_model.MenuModel;
 import com.example.baseprojectandroid.src.viewmodel.menu_viewmodel.MenuViewModel;
 import com.example.baseprojectandroid.utils.Constain;
 import com.example.baseprojectandroid.utils.Helpers;
@@ -82,7 +82,7 @@ public class FragmentDialogAddMenu extends DialogFragment {
 
                 if (checkValidationInsertMenu()) {
                     //create model
-                    final MenuModels menuModels = new MenuModels(image, name, Integer.parseInt(price), mType, Integer.parseInt(number));
+                    final MenuModel menuModel = new MenuModel(image, name, Integer.parseInt(price), mType, Integer.parseInt(number));
 
                     //insert menu
                     new AsyncTask<Void, Void, Void>() {
@@ -98,7 +98,7 @@ public class FragmentDialogAddMenu extends DialogFragment {
                         protected Void doInBackground(Void... voids) {
                             try {
                                 Thread.sleep(3000);
-                                mMenuViewmodel.insertMenu(menuModels);
+                                mMenuViewmodel.insertMenu(menuModel);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }

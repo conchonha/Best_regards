@@ -1,6 +1,6 @@
-package com.example.baseprojectandroid.models.menu_models;
+package com.example.baseprojectandroid.models.menu_model;
 
-public class MenuModels {
+public class MenuModel {
     private int id;
     private String mImage;
     private String mName;
@@ -8,7 +8,7 @@ public class MenuModels {
     private String mType;
     private int mNumber;
 
-    public MenuModels( String mImage, String mName, double mMoney, String mType, int mNumber) {
+    public MenuModel(String mImage, String mName, double mMoney, String mType, int mNumber) {
         this.mImage = mImage;
         this.mName = mName;
         this.mMoney = mMoney;
@@ -16,7 +16,7 @@ public class MenuModels {
         this.mNumber = mNumber;
     }
 
-    public MenuModels(){
+    public MenuModel(){
 
     }
 

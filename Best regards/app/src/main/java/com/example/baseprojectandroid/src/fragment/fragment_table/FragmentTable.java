@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.baseprojectandroid.R;
 import com.example.baseprojectandroid.compoments.toolbar.Toolbar;
 import com.example.baseprojectandroid.models.callback.CallbackToolbar;
+import com.example.baseprojectandroid.models.table_model.TableModel;
 import com.example.baseprojectandroid.src.adapter.table_adapter.TableAdapter;
-import com.example.baseprojectandroid.models.table_models.TableModels;
 import com.example.baseprojectandroid.src.viewmodel.table_viewmodel.TableViewModel;
 
 import java.util.ArrayList;
@@ -45,9 +45,9 @@ public class FragmentTable extends Fragment {
         mTableViewModel.initTable();
 
         // lắng nghe quan sát sự thay đổi của dữ liệu
-        mTableViewModel.getmArrayTable().observe(getViewLifecycleOwner(), new Observer<List<TableModels>>() {
+        mTableViewModel.getmArrayTable().observe(getViewLifecycleOwner(), new Observer<List<TableModel>>() {
             @Override
-            public void onChanged(List<TableModels> tableModels) {
+            public void onChanged(List<TableModel> tableModels) {
                 mAdapter.notifyDataSetChanged();
             }
         });
@@ -57,7 +57,7 @@ public class FragmentTable extends Fragment {
         //create recyclerview
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new GridLayoutManager(mView.getContext(), 2));
-        mAdapter = new TableAdapter((ArrayList) mTableViewModel.getmArrayTable().getValue(), mView.getContext(), R.layout.layout_item_listtable);
+        mAdapter = new TableAdapter((ArrayList) mTableViewModel.getmArrayTable().getValue(), mView.getContext(), R.layout.layout_item_listtable,getFragmentManager());
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
 
@@ -72,8 +72,10 @@ public class FragmentTable extends Fragment {
         mRecyclerView = mView.findViewById(R.id.recyclerTable);
     }
 
-    private void setCallbackToolbar(CallbackToolbar callbackToolbar){
+    private void setCallbackToolbar(CallbackToolbar callbackToolbar) {
         CallbackToolbar callbackToolbar1 = callbackToolbar;
         callbackToolbar1.onReceiveTitle(getResources().getString(R.string.lbl_table));
     }
+
+
 }

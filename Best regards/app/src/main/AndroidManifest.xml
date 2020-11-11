@@ -14,28 +14,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".src.page.login_activity.LoginActivity">
+        <activity android:name="com.example.baseprojectandroid.src.page.staff_table_activity.StaffTableActivity" />
+        <activity android:name="com.example.baseprojectandroid.src.page.login_activity.LoginActivity" />
+        <activity android:name="com.example.baseprojectandroid.src.page.bottom_navigator_bar.BottomNavigatorBarActivity" />
+        <activity android:name="com.example.baseprojectandroid.src.page.splash_activity.SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".src.page.bottom_navigator_bar.BottomNavigatorBarActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
-        <activity android:name=".src.page.splash_activity.SplashActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
     </application>
 

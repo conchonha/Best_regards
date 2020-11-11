@@ -9,16 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.baseprojectandroid.R;
-import com.example.baseprojectandroid.models.bill_models.BillModels;
+import com.example.baseprojectandroid.models.bill_model.BillModel;
 
 import java.util.ArrayList;
 
 public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolder> {
     private Context mContext;
     private int mLayout;
-    private ArrayList<BillModels>mArrayBill;
+    private ArrayList<BillModel>mArrayBill;
 
-    public BillAdapter(ArrayList<BillModels> mArrayBill,Context mContext, int mLayout) {
+    public BillAdapter(ArrayList<BillModel> mArrayBill, Context mContext, int mLayout) {
         this.mContext = mContext;
         this.mLayout = mLayout;
         this.mArrayBill = mArrayBill;
@@ -33,10 +33,10 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        BillModels billModels = mArrayBill.get(position);
-        holder.mCodeBill.setText(billModels.getmBillCode());
-        holder.mDateBill.setText(billModels.getmDate());
-        holder.mSumBill.setText(billModels.getmSumBill());
+        BillModel billModel = mArrayBill.get(position);
+        holder.mCodeBill.setText(billModel.getmBillCode());
+        holder.mDateBill.setText(billModel.getmDate());
+        holder.mSumBill.setText(billModel.getmSumBill());
 
     }
 

@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.baseprojectandroid.R;
-import com.example.baseprojectandroid.models.menu_models.MenuModels;
+import com.example.baseprojectandroid.models.menu_model.MenuModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -18,9 +18,9 @@ import java.util.ArrayList;
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     private Context mContext;
     private int mLayout;
-    private ArrayList<MenuModels>mArrayMenu;
+    private ArrayList<MenuModel>mArrayMenu;
 
-    public MenuAdapter(ArrayList<MenuModels> mArrayMenu,Context mContext, int mLayout) {
+    public MenuAdapter(ArrayList<MenuModel> mArrayMenu, Context mContext, int mLayout) {
         this.mContext = mContext;
         this.mLayout = mLayout;
         this.mArrayMenu = mArrayMenu;
@@ -35,10 +35,10 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        MenuModels menuModels = mArrayMenu.get(position);
-        Picasso.with(mContext).load(menuModels.getmImage()).into(holder.mImage);
-        holder.mName.setText(menuModels.getmName());
-        holder.mMoney.setText(menuModels.getmMoney()+"");
+        MenuModel menuModel = mArrayMenu.get(position);
+        Picasso.with(mContext).load(menuModel.getmImage()).into(holder.mImage);
+        holder.mName.setText(menuModel.getmName());
+        holder.mMoney.setText(menuModel.getmMoney()+"");
     }
 
     @Override

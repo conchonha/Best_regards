@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.baseprojectandroid.R;
 import com.example.baseprojectandroid.compoments.toolbar.Toolbar;
 import com.example.baseprojectandroid.models.callback.CallbackToolbar;
-import com.example.baseprojectandroid.models.menu_models.MenuModels;
+import com.example.baseprojectandroid.models.menu_model.MenuModel;
 import com.example.baseprojectandroid.src.adapter.menu_adapter.MenuAdapter;
 import com.example.baseprojectandroid.src.dialog.fragment_dialog_add.FragmentDialogAddMenu;
 import com.example.baseprojectandroid.src.viewmodel.menu_viewmodel.MenuViewModel;
@@ -64,9 +64,9 @@ public class FragmentMenu extends Fragment {
         mMenuViewModel.initMenu();
 
         // lắng nghe quan sát sự thay đổi của dữ liệu
-        mMenuViewModel.getmArrayMenu().observe(getViewLifecycleOwner(), new Observer<List<MenuModels>>() {
+        mMenuViewModel.getmArrayMenu().observe(getViewLifecycleOwner(), new Observer<List<MenuModel>>() {
             @Override
-            public void onChanged(List<MenuModels> menuModels) {
+            public void onChanged(List<MenuModel> menuModels) {
                 mAdapter.notifyDataSetChanged();
             }
         });

@@ -1,6 +1,5 @@
 package com.example.baseprojectandroid.src.adapter.staft_adapter;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -11,8 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.baseprojectandroid.R;
 import com.example.baseprojectandroid.models.callback.CallbackStaff;
-import com.example.baseprojectandroid.models.staft_models.StaftModels;
-import com.example.baseprojectandroid.src.dialog.fragment_dialog_add.FragmentDialogAddStaff;
+import com.example.baseprojectandroid.models.staft_model.StaftModel;
 import com.example.baseprojectandroid.src.dialog.fragment_dialog_edit.FragmentDialogEditStaff;
 import com.example.baseprojectandroid.src.fragment.fragment_staft.FragmentStaft;
 import com.example.baseprojectandroid.utils.Constain;
@@ -22,9 +20,9 @@ import java.util.ArrayList;
 public class StaftAdapter extends RecyclerView.Adapter<StaftAdapter.ViewHolder> {
     private FragmentStaft mContext;
     private int layout;
-    private ArrayList<StaftModels>mArrayStaft;
+    private ArrayList<StaftModel>mArrayStaft;
 
-    public StaftAdapter(FragmentStaft mContext, int layout, ArrayList<StaftModels> mArrayStaft) {
+    public StaftAdapter(FragmentStaft mContext, int layout, ArrayList<StaftModel> mArrayStaft) {
         this.mContext = mContext;
         this.layout = layout;
         this.mArrayStaft = mArrayStaft;
@@ -39,9 +37,9 @@ public class StaftAdapter extends RecyclerView.Adapter<StaftAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        StaftModels staftModels = mArrayStaft.get(position);
-        holder.mAccount.setText(staftModels.getmNameStaft());
-        holder.mRole.setText(staftModels.getmRole());
+        StaftModel staftModel = mArrayStaft.get(position);
+        holder.mAccount.setText(staftModel.getmNameStaft());
+        holder.mRole.setText(staftModel.getmRole());
         listenerOnclickedView(holder,position);
     }
 

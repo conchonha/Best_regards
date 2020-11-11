@@ -22,10 +22,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.baseprojectandroid.R;
 import com.example.baseprojectandroid.compoments.toolbar.Toolbar;
 import com.example.baseprojectandroid.models.callback.CallbackToolbar;
-import com.example.baseprojectandroid.models.staft_models.StaftModels;
+import com.example.baseprojectandroid.models.staft_model.StaftModel;
 import com.example.baseprojectandroid.src.adapter.staft_adapter.StaftAdapter;
 import com.example.baseprojectandroid.src.dialog.fragment_dialog_add.FragmentDialogAddStaff;
-import com.example.baseprojectandroid.src.dialog.fragment_dialog_edit.FragmentDialogEditStaff;
 import com.example.baseprojectandroid.src.viewmodel.staft_viewmodel.StaftViewModel;
 import com.example.baseprojectandroid.utils.Constain;
 import com.example.baseprojectandroid.utils.Helpers;
@@ -93,9 +92,9 @@ public class FragmentStaft extends Fragment {
         mStaftViewModel.initStaft();
 
         // lắng nghe quan sát sự thay đổi của dữ liệu
-        mStaftViewModel.getmArrayStaff().observe(getViewLifecycleOwner(), new Observer<List<StaftModels>>() {
+        mStaftViewModel.getmArrayStaff().observe(getViewLifecycleOwner(), new Observer<List<StaftModel>>() {
             @Override
-            public void onChanged(List<StaftModels> staftModels) {
+            public void onChanged(List<StaftModel> staftModels) {
                 Log.d("11111", "onChange: " + staftModels.size());
                 mAdapterStaft.notifyDataSetChanged();
             }

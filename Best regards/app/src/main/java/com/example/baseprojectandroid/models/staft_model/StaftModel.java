@@ -1,6 +1,6 @@
-package com.example.baseprojectandroid.models.staft_models;
+package com.example.baseprojectandroid.models.staft_model;
 
-public class StaftModels {
+public class StaftModel {
     private int mId;
     private String mNameStaft;
     private int mAge;
@@ -9,7 +9,7 @@ public class StaftModels {
     private String mRole;
     private String mImage;
 
-    public StaftModels( String mNameStaft, int mAge, String mAddress, String mPhoneNumber, String mRole, String mImage) {
+    public StaftModel(String mNameStaft, int mAge, String mAddress, String mPhoneNumber, String mRole, String mImage) {
         this.mNameStaft = mNameStaft;
         this.mAge = mAge;
         this.mAddress = mAddress;
@@ -21,7 +21,7 @@ public class StaftModels {
     /*
     constructer defaulf
      */
-    public StaftModels(){
+    public StaftModel(){
 
     }
 

@@ -2,14 +2,14 @@ package com.example.baseprojectandroid.src.repositories.bill_repositories;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.baseprojectandroid.models.bill_models.BillModels;
+import com.example.baseprojectandroid.models.bill_model.BillModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BillRepositories {
     private static BillRepositories instanceBill;
-    private static List<BillModels>mListBill = new ArrayList<>();
+    private static List<BillModel>mListBill = new ArrayList<>();
 
     public static BillRepositories getInstance(){
         if (instanceBill == null){
@@ -18,8 +18,8 @@ public class BillRepositories {
         return instanceBill;
     }
 
-    public MutableLiveData<List<BillModels>> getListBill(){
-        MutableLiveData<List<BillModels>> arrayTmp = new MutableLiveData<>();
+    public MutableLiveData<List<BillModel>> getListBill(){
+        MutableLiveData<List<BillModel>> arrayTmp = new MutableLiveData<>();
         setDataBill();
         arrayTmp.setValue(mListBill);
         return arrayTmp;
@@ -28,7 +28,7 @@ public class BillRepositories {
     public void setDataBill(){
         mListBill.clear();
         for (int i = 0; i <= 1; i++){
-            BillModels models = new BillModels();
+            BillModel models = new BillModel();
             models.setmImageBill("R.drawable.img_bill");
             models.setmBillCode("1230123");
             models.setmDate("09/11/2020");

@@ -17,7 +17,7 @@ import com.example.baseprojectandroid.R;
 import com.example.baseprojectandroid.compoments.toolbar.Toolbar;
 import com.example.baseprojectandroid.models.callback.CallbackToolbar;
 import com.example.baseprojectandroid.src.adapter.bill_adapter.BillAdapter;
-import com.example.baseprojectandroid.models.bill_models.BillModels;
+import com.example.baseprojectandroid.models.bill_model.BillModel;
 import com.example.baseprojectandroid.src.viewmodel.bill_viewmodel.BillViewModel;
 
 import java.util.ArrayList;
@@ -52,9 +52,9 @@ public class FragmentBill extends Fragment {
         mBillViewModel.initBill();
 
         // lắng nghe quan sát sự thay đổi của dữ liệu
-        mBillViewModel.getmArrayBill().observe(getViewLifecycleOwner(), new Observer<List<BillModels>>() {
+        mBillViewModel.getmArrayBill().observe(getViewLifecycleOwner(), new Observer<List<BillModel>>() {
             @Override
-            public void onChanged(List<BillModels> billModels) {
+            public void onChanged(List<BillModel> billModels) {
            mAdapterBill.notifyDataSetChanged();
             }
         });

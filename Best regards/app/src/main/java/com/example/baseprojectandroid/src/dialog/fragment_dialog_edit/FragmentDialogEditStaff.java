@@ -26,8 +26,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.baseprojectandroid.R;
 import com.example.baseprojectandroid.models.callback.CallbackStaff;
-import com.example.baseprojectandroid.models.callback.CallbackToolbar;
-import com.example.baseprojectandroid.models.staft_models.StaftModels;
+import com.example.baseprojectandroid.models.staft_model.StaftModel;
 import com.example.baseprojectandroid.src.viewmodel.staft_viewmodel.StaftViewModel;
 import com.example.baseprojectandroid.utils.Constain;
 import com.example.baseprojectandroid.utils.Helpers;
@@ -51,7 +50,7 @@ public class FragmentDialogEditStaff extends DialogFragment implements CallbackS
     private final int REQUEST_CODE_LOAD_IMAGE = 01234;
     private String mUriImage = "";
     private Dialog mDialog;
-    private StaftModels mStaftModels;
+    private StaftModel mStaftModel;
     private int mPosition = 0;
 
     @Nullable
@@ -67,14 +66,14 @@ public class FragmentDialogEditStaff extends DialogFragment implements CallbackS
     }
 
     private void updateUi() {
-        if(mStaftModels != null){
+        if(mStaftModel != null){
             mTxtTitle.setText(getString(R.string.lbl_update));
             mBtnUpdate.setText(getString(R.string.lbl_update));
-            mEdtFullName.setText(mStaftModels.getmNameStaft()+"");
-            mEdtAge.setText(mStaftModels.getmAge()+"");
-            mEdtAddress.setText(mStaftModels.getmAddress()+"");
-            mEdtPhoneNumber.setText(mStaftModels.getmPhoneNumber()+"");
-            mSpiner.getItemAtPosition(mStaftViewModel.getmArrayRoles().getValue().indexOf(mStaftModels.getmRole()));
+            mEdtFullName.setText(mStaftModel.getmNameStaft()+"");
+            mEdtAge.setText(mStaftModel.getmAge()+"");
+            mEdtAddress.setText(mStaftModel.getmAddress()+"");
+            mEdtPhoneNumber.setText(mStaftModel.getmPhoneNumber()+"");
+            mSpiner.getItemAtPosition(mStaftViewModel.getmArrayRoles().getValue().indexOf(mStaftModel.getmRole()));
         }
     }
 
@@ -126,10 +125,10 @@ public class FragmentDialogEditStaff extends DialogFragment implements CallbackS
                         @Override
                         protected Void doInBackground(Void... voids) {
                             //create model staft
-                            StaftModels staftModels = new StaftModels(fullName, age, address, phone, mType, mUriImage);
+                            StaftModel staftModel = new StaftModel(fullName, age, address, phone, mType, mUriImage);
                             try {
                                 Thread.sleep(3000);
-                                mStaftViewModel.updateStaff(staftModels,mPosition);
+                                mStaftViewModel.updateStaff(staftModel,mPosition);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
@@ -246,8 +245,8 @@ public class FragmentDialogEditStaff extends DialogFragment implements CallbackS
     }
 
     @Override
-    public void onGetStaff(StaftModels staftModels,int position) {
-        mStaftModels = staftModels;
+    public void onGetStaff(StaftModel staftModel, int position) {
+        mStaftModel = staftModel;
         mPosition = position;
     }
 }

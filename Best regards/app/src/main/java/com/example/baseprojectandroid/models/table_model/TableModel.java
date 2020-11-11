@@ -1,6 +1,6 @@
-package com.example.baseprojectandroid.models.table_models;
+package com.example.baseprojectandroid.models.table_model;
 
-public class TableModels {
+public class TableModel {
     String mNumber;
 
     public String getmNumber() {

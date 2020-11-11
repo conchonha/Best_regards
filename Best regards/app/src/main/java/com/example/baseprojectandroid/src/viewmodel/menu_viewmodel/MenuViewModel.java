@@ -1,20 +1,15 @@
 package com.example.baseprojectandroid.src.viewmodel.menu_viewmodel;
 
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.baseprojectandroid.models.menu_models.MenuModels;
-import com.example.baseprojectandroid.src.dialog.fragment_dialog_add.FragmentDialogAddMenu;
+import com.example.baseprojectandroid.models.menu_model.MenuModel;
 import com.example.baseprojectandroid.src.repositories.menu_repositories.MenuRepositories;
-import com.example.baseprojectandroid.utils.Constain;
-import com.example.baseprojectandroid.utils.Helpers;
 
 import java.util.List;
 
 public class MenuViewModel extends ViewModel {
-    private MutableLiveData<List<MenuModels>> mArrayMenu;
+    private MutableLiveData<List<MenuModel>> mArrayMenu;
     private MenuRepositories mMenuRepositories;
     private MutableLiveData<List<String>>mArrayListTitle;
 
@@ -27,14 +22,14 @@ public class MenuViewModel extends ViewModel {
         mArrayMenu = mMenuRepositories.getListMenu();
     }
 
-    public MutableLiveData<List<MenuModels>> getmArrayMenu() {
+    public MutableLiveData<List<MenuModel>> getmArrayMenu() {
         return mArrayMenu;
     }
 
     //khởi tạo + get data spiner + insert data menu
-    public void insertMenu(MenuModels menuModels){
-        List<MenuModels> list = mArrayMenu.getValue();
-        list.add(menuModels);
+    public void insertMenu(MenuModel menuModel){
+        List<MenuModel> list = mArrayMenu.getValue();
+        list.add(menuModel);
         mArrayMenu.postValue(list);
     }
 

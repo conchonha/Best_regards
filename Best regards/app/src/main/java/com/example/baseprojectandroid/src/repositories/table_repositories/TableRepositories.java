@@ -2,7 +2,7 @@ package com.example.baseprojectandroid.src.repositories.table_repositories;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.baseprojectandroid.models.table_models.TableModels;
+import com.example.baseprojectandroid.models.table_model.TableModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 public class TableRepositories {
 
     private static TableRepositories instance;
-    public static List<TableModels>mListTable = new ArrayList<>();
+    public static List<TableModel>mListTable = new ArrayList<>();
 
 
     public static TableRepositories getInstance(){
@@ -20,8 +20,8 @@ public class TableRepositories {
         return instance;
     }
         //quan sát, lắng nghe dữ liệu
-    public MutableLiveData<List<TableModels>> getListTable(){
-        MutableLiveData<List<TableModels>> arrayTmp = new MutableLiveData<>();
+    public MutableLiveData<List<TableModel>> getListTable(){
+        MutableLiveData<List<TableModel>> arrayTmp = new MutableLiveData<>();
         setDataTable();
         arrayTmp.setValue(mListTable);
         return arrayTmp;
@@ -30,7 +30,7 @@ public class TableRepositories {
     private void setDataTable(){
         mListTable.clear();
         for (int i = 0; i <= 5; i++){
-            TableModels models = new TableModels();
+            TableModel models = new TableModel();
             models.setmNumber("");
             mListTable.add(models);
         }

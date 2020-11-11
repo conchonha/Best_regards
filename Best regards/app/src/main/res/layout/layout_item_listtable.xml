@@ -12,6 +12,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="107dp"
+            android:id="@+id/linear_table"
             android:layout_height="83dp"
             android:background="@drawable/ic_tablelist">
             <TextView
