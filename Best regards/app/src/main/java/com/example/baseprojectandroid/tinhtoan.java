@@ -4,7 +4,7 @@ package com.example.baseprojectandroid;/*
 */
 
 public class tinhtoan {
-    private void tinhtong(int a, int b){
-        a += b;
+    private int tinhtong(int a, int b) {
+       return a += b;
     }
 }
