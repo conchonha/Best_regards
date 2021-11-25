@@ -7,6 +7,4 @@ public class tinhtoan {
     private int tinhtong(int a, int b) {
        return a += b;
     }
-    //fdfjlkdjfj
-    //dfgjdkfjghkfdgldfgjk
 }
