@@ -5,6 +5,6 @@ package com.example.baseprojectandroid;/*
 
 public class tinhtoan {
     private int tinhtong(int a, int b) {
-       return a += b;
+       return 0;
     }
 }
